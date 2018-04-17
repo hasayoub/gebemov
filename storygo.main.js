@@ -3,7 +3,7 @@
 
     // init cubeportfolio
     $('#js-grid-juicy-projects').cubeportfolio({
-        filters: '#js-filters-juicy-projects1,#js-filters-juicy-projects2',
+        filters: '#js-filters-juicy-projects',
         layoutMode: 'grid',
         defaultFilter: '*',
         animationType: 'quicksand',
