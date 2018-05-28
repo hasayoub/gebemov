@@ -90,7 +90,7 @@
         },
         
         show: function(left, top) {
-	        $("body").append('<div id="colorPick" style="display:none;top:' + top + 'px;left:' + left + 'px"><span>Default palette:</span></div>');
+	        $("body").append('<div id="colorPick" style="display:none;top:' + top + 'px;left:' + left + 'px"><span>لونك المفضل :</span></div>');
 	        jQuery.each($.fn.colorPick.defaults.palette, (index, item) => {
 		        $("#colorPick").append('<div class="colorPickButton" hexValue="' + item + '" style="background:' + item + '"></div>');
 			});
