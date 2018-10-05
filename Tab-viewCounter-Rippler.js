@@ -13,97 +13,10 @@ $(document).ready(function() {
 		} );
 	})(jQuery);
 });
-
-// Simple Tab JQuery Plugin 2 
-    (function(a) {
-        a.fn.simpleTab = function(b) {
-            b = jQuery.extend({
-                active: 1,
-                fx: null,
-                showSpeed: 400,
-                hideSpeed: 400,
-                showEasing: null,
-                hideEasing: null,
-                show: function() {},
-                hide: function() {},
-                change: function() {}
-            }, b);
-            return this.each(function() {
-                var e = a(this),
-                    c = e.children("[data-tab]"),
-                    d = b.active - 1;
-                e.addClass("simpleTab").prepend('<ul class="tab-wrapper"></ul>');
-                c.addClass("tab-content").each(function() {
-                    a(this).hide();
-                    e.find(".tab-wrapper").append('<li><a href="#">' + a(this).data("tab") + "</a></li>")
-                }).eq(d).show();
-                e.find(".tab-wrapper a").on("click", function() {
-                    var f = a(this).parent().index();
-                    a(this).closest(".tab-wrapper").find(".activeTab").removeClass("activeTab");
-                    a(this).addClass("activeTab");
-                    if (b.fx == "slide") {
-                        if (c.eq(f).is(":hidden")) {
-                            c.slideUp(b.hideSpeed, b.hideEasing, function() {
-                                b.hide.call(e)
-                            }).eq(f).slideDown(b.showSpeed, b.showEasing, function() {
-                                b.show.call(e)
-                            })
-                        }
-                    } else {
-                        if (b.fx == "fade") {
-                            if (c.eq(f).is(":hidden")) {
-                                c.hide().eq(f).fadeIn(b.showSpeed, b.showEasing, function() {
-                                    b.show.call(e)
-                                })
-                            }
-                        } else {
-                            if (b.fx == "fancyslide") {
-                                if (c.eq(f).is(":hidden")) {
-                                    c.slideUp(b.hideSpeed, b.hideEasing, function() {
-                                        b.hide.call(e)
-                                    }).eq(f).delay(b.hideSpeed).slideDown(b.showSpeed, b.showEasing, function() {
-                                        b.show.call(e)
-                                    })
-                                }
-                            } else {
-                                if (c.eq(f).is(":hidden")) {
-                                    c.hide().eq(f).show()
-                                }
-                            }
-                        }
-                    }
-                    b.change.call(e);
-                    return false
-                }).eq(d).addClass("activeTab")
-            })
-        }
-    })(jQuery);
-    (function() {
-        var e = document.getElementsByTagName("pre"),
-            t = e.length;
-        for (var n = 0; n < t; n++) {
-            e[n].innerHTML = '<span class="line-number"></span>' + e[n].innerHTML + '<span class="cl"></span>';
-            var r = e[n].innerHTML.split(/\n/).length;
-            for (var i = 0; i < r; i++) {
-                var s = e[n].getElementsByTagName("span")[0];
-                s.innerHTML += "<span>" + (i + 1) + "</span>"
-            }
-        }
-    })();
-    $(document).ready(function() {
-        $("#contact").appendTo(".contact-form");
-        $(".contact-form #contact").css("display", "block");
-        $(".post-tabs").simpleTab({
-            active: 1,
-            fx: "fade",
-            showSpeed: 400,
-            hideSpeed: 400
-        })
-    });
     
    //views Counter
      $.each($("a[name]"), function (i, e) {
-        var elem = $(e).parent().find("#postviews");
+        var elem = $(e).parent().find(".postviews");
         var blogStats = new Firebase("https://storgo-doc.firebaseio.com/pages/id/" + $(e).attr("name"));
         blogStats.once("value", function(snapshot) {
             var data = snapshot.val();
